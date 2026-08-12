@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TermoPdfService } from '../../core/services/termo-pdf.service';
 
 @Component({
   selector: 'app-emitir-termo',
@@ -12,7 +13,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class EmitirTermoComponent {
   termoForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private termoPdfService: TermoPdfService) {
     this.termoForm = this.fb.group({
       tipoTermo: ['devolucao', Validators.required],
       nome: ['', Validators.required],
@@ -29,7 +30,12 @@ export class EmitirTermoComponent {
       this.termoForm.markAllAsTouched();
       return;
     }
-    console.log(this.termoForm.value);
-    
+    const termo = {
+      ...this.termoForm.value,
+      dataEmissao: new Date().toLocaleDateString('pt-BR'),
+    };
+
+    this.termoPdfService.gerarPdf(termo);
   }
+    
 }

@@ -1,0 +1,26 @@
+<h2>Histórico de Termos</h2>
+
+<table *ngIf="termos.length > 0; else semTermos">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Nome</th>
+      <th>Equipamento</th>
+      <th>Patrimônio</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let termo of termos">
+      <td>{{ termo.tipoTermo === 'devolucao' ? 'Devolução' : 'Responsabilidade' }}</td>
+      <td>{{ termo.nome }}</td>
+      <td>{{ termo.equipamento }}</td>
+      <td>{{ termo.patrimonio }}</td>
+      <td>{{ termo.dataEmissao }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #semTermos>
+  <p>Nenhum termo emitido ainda.</p>
+</ng-template>
