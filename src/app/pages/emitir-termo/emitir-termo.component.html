@@ -1,0 +1,41 @@
+<form [formGroup]="termoForm" (ngSubmit)="onSubmit()">
+
+  <label>Tipo de termo</label>
+  <select formControlName="tipoTermo">
+    <option value="devolucao">Devolução</option>
+    <option value="responsabilidade">Responsabilidade</option>
+  </select>
+
+  <label>Nome</label>
+  <input type="text" formControlName="nome" />
+  <span *ngIf="termoForm.get('nome')?.invalid && termoForm.get('nome')?.touched">
+    Campo obrigatório
+  </span>
+
+  <label>Cargo</label>
+  <input type="text" formControlName="cargo" />
+  <span *ngIf="termoForm.get('cargo')?.invalid && termoForm.get('cargo')?.touched">
+    Campo obrigatório
+  </span>
+
+  <label>Unidade</label>
+  <input type="text" formControlName="unidade" />
+
+  <label>Registro CREA-SP</label>
+  <input type="text" formControlName="registroCrea" />
+
+  <label>Patrimônio/Simpress N°</label>
+  <input type="text" formControlName="patrimonio" />
+  <span *ngIf="termoForm.get('patrimonio')?.invalid && termoForm.get('patrimonio')?.touched">
+    Campo obrigatório
+  </span>
+
+  <label>Equipamento</label>
+  <input type="text" formControlName="equipamento" placeholder="Ex: Notebook Dell Latitude" />
+  <span *ngIf="termoForm.get('equipamento')?.invalid && termoForm.get('equipamento')?.touched">
+    Campo obrigatório
+  </span>
+
+  <button type="submit">Gerar termo</button>
+
+</form>
