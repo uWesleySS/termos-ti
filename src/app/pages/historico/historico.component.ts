@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Termo } from '../../core/models/termo';
-import { TermoPdfService } from '../../core/services/termo-pdf.service';
+import { TermoApiService } from '../../core/services/termo-api.service';
 
 @Component({
   selector: 'app-historico',
@@ -13,9 +13,12 @@ import { TermoPdfService } from '../../core/services/termo-pdf.service';
 export class HistoricoComponent implements OnInit {
   termos: Termo[] = [];
 
-  constructor(private termoPdfService: TermoPdfService) {}
+  constructor(private termoApiService: TermoApiService) {}
 
   ngOnInit(): void {
-    this.termos = this.termoPdfService.obterHistorico();
+    this.termoApiService.listar().subscribe({
+      next: (termos) => this.termos = termos,
+      error: (err) => console.error('Erro ao carregar historico:', err),
+    });
   }
 }

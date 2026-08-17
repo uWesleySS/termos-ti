@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TermoPdfService } from '../../core/services/termo-pdf.service';
+import { TermoApiService } from '../../core/services/termo-api.service';
 
 @Component({
   selector: 'app-emitir-termo',
@@ -13,7 +14,11 @@ import { TermoPdfService } from '../../core/services/termo-pdf.service';
 export class EmitirTermoComponent {
   termoForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private termoPdfService: TermoPdfService) {
+  constructor(
+    private fb: FormBuilder,
+    private termoPdfService: TermoPdfService,
+    private termoApiService: TermoApiService
+  ) {
     this.termoForm = this.fb.group({
       tipoTermo: ['devolucao', Validators.required],
       nome: ['', Validators.required],
@@ -36,6 +41,10 @@ export class EmitirTermoComponent {
     };
 
     this.termoPdfService.gerarPdf(termo);
+
+    this.termoApiService.criar(termo).subscribe({
+      next: () => console.log('Termo salvo no banco com sucesso'),
+      error: (err) => console.error('Erro ao salvar termo:', err),
+    });
   }
-    
 }
