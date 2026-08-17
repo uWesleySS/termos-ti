@@ -1,0 +1,51 @@
+.card {
+  background-color: var(--cor-superficie);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-card);
+  padding: var(--espaco-xl);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--espaco-lg);
+}
+
+th {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--cor-texto-secundario);
+  padding: var(--espaco-sm) var(--espaco-md);
+  border-bottom: 2px solid var(--cor-borda);
+}
+
+td {
+  padding: var(--espaco-md);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+tbody tr:hover {
+  background-color: var(--cor-fundo);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #fef3c7;
+  color: #92400e;
+
+  &--devolucao {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+}
+
+.vazio {
+  color: var(--cor-texto-secundario);
+  text-align: center;
+  padding: var(--espaco-xl) 0;
+}

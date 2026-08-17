@@ -1,5 +1,11 @@
-<nav>
-  <a routerLink="/">Emitir Termo</a> |
-  <a routerLink="/historico">Histórico</a>
-</nav>
-<router-outlet></router-outlet>
+<header class="app-header">
+  <div class="app-header__brand">Termos TI</div>
+  <nav class="app-header__nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Emitir Termo</a>
+    <a routerLink="/historico" routerLinkActive="active">Histórico</a>
+  </nav>
+</header>
+
+<main class="app-content">
+  <router-outlet></router-outlet>
+</main>

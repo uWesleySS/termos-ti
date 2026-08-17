@@ -1,0 +1,42 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espaco-md) var(--espaco-xl);
+  background-color: var(--cor-primaria);
+  color: white;
+
+  &__brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  &__nav {
+    display: flex;
+    gap: var(--espaco-lg);
+
+    a {
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-weight: 500;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+
+      &:hover {
+        color: white;
+      }
+
+      &.active {
+        color: white;
+        border-bottom-color: var(--cor-secundaria);
+      }
+    }
+  }
+}
+
+.app-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--espaco-xl);
+}

@@ -1,41 +1,61 @@
-<form [formGroup]="termoForm" (ngSubmit)="onSubmit()">
+<div class="card">
+  <h2>Emitir Termo</h2>
 
-  <label>Tipo de termo</label>
-  <select formControlName="tipoTermo">
-    <option value="devolucao">Devolução</option>
-    <option value="responsabilidade">Responsabilidade</option>
-  </select>
+  <form [formGroup]="termoForm" (ngSubmit)="onSubmit()" class="form-grid">
 
-  <label>Nome</label>
-  <input type="text" formControlName="nome" />
-  <span *ngIf="termoForm.get('nome')?.invalid && termoForm.get('nome')?.touched">
-    Campo obrigatório
-  </span>
+    <div class="campo campo--full">
+      <label>Tipo de termo</label>
+      <select formControlName="tipoTermo">
+        <option value="devolucao">Devolução</option>
+        <option value="responsabilidade">Responsabilidade</option>
+      </select>
+    </div>
 
-  <label>Cargo</label>
-  <input type="text" formControlName="cargo" />
-  <span *ngIf="termoForm.get('cargo')?.invalid && termoForm.get('cargo')?.touched">
-    Campo obrigatório
-  </span>
+    <div class="campo">
+      <label>Nome</label>
+      <input type="text" formControlName="nome" />
+      <span class="erro" *ngIf="termoForm.get('nome')?.invalid && termoForm.get('nome')?.touched">
+        Campo obrigatório
+      </span>
+    </div>
 
-  <label>Unidade</label>
-  <input type="text" formControlName="unidade" />
+    <div class="campo">
+      <label>Cargo</label>
+      <input type="text" formControlName="cargo" />
+      <span class="erro" *ngIf="termoForm.get('cargo')?.invalid && termoForm.get('cargo')?.touched">
+        Campo obrigatório
+      </span>
+    </div>
 
-  <label>Registro CREA-SP</label>
-  <input type="text" formControlName="registroCrea" />
+    <div class="campo">
+      <label>Unidade</label>
+      <input type="text" formControlName="unidade" />
+    </div>
 
-  <label>Patrimônio/Simpress N°</label>
-  <input type="text" formControlName="patrimonio" />
-  <span *ngIf="termoForm.get('patrimonio')?.invalid && termoForm.get('patrimonio')?.touched">
-    Campo obrigatório
-  </span>
+    <div class="campo">
+      <label>Registro CREA-SP</label>
+      <input type="text" formControlName="registroCrea" />
+    </div>
 
-  <label>Equipamento</label>
-  <input type="text" formControlName="equipamento" placeholder="Ex: Notebook Dell Latitude" />
-  <span *ngIf="termoForm.get('equipamento')?.invalid && termoForm.get('equipamento')?.touched">
-    Campo obrigatório
-  </span>
+    <div class="campo">
+      <label>Patrimônio/Simpress N°</label>
+      <input type="text" formControlName="patrimonio" />
+      <span class="erro" *ngIf="termoForm.get('patrimonio')?.invalid && termoForm.get('patrimonio')?.touched">
+        Campo obrigatório
+      </span>
+    </div>
 
-  <button type="submit">Gerar termo</button>
+    <div class="campo">
+      <label>Equipamento</label>
+      <input type="text" formControlName="equipamento" placeholder="Ex: Notebook Dell Latitude" />
+      <span class="erro" *ngIf="termoForm.get('equipamento')?.invalid && termoForm.get('equipamento')?.touched">
+        Campo obrigatório
+      </span>
+    </div>
 
-</form>
+    <div class="campo--full">
+      <button type="submit">Gerar termo</button>
+    </div>
+
+  </form>
+</div>
